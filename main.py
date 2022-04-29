@@ -8,4 +8,4 @@ while True:
 
     if data != None:
         if content == 'Forward':
-            server.send_response(conn, content)
+            server.send_response(conn, data)
