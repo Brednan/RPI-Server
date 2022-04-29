@@ -1,5 +1,4 @@
 import socket
-from adafruit_motorkit import MotorKit
 
 class SocketServer:
     def __init__(self, HOST, PORT):
