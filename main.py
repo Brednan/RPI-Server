@@ -7,4 +7,5 @@ while True:
     content = data.decode()
 
     if data != None:
-        print(f'{data.decode()}')
+        if content == 'Forward':
+            server.send_response(conn, content)
