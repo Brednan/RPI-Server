@@ -1,5 +1,7 @@
 import socket
+from xxlimited import foo
 from motor_controls import MotorControls
+import os
 
 class SocketServer():
     def __init__(self, HOST, PORT):
@@ -8,9 +10,10 @@ class SocketServer():
         self.server.listen()
         self.motors_manager = MotorControls()
 
+    #This function waits for a request and returns the content from the request
     def request_listener(self):
         conn, addr = self.server.accept()
-        data = conn.recv(1024)
+        data = conn.recv(2048)
 
         if not data:
             return None
@@ -31,3 +34,17 @@ class SocketServer():
                 
                 elif content == 'Stop':
                     self.motors_manager.stop_motors()
+                
+                elif content == "Footage":
+                    self.send_footage(conn)
+
+    def send_footage(self, conn):
+        footage_file = open('./Vision/test-image.PNG', 'rb')
+        footage = footage_file.read(2048)
+
+        while footage:
+            conn.sendall(footage)
+            footage = footage_file.read(2048)
+        
+        print('done sending')
+        footage_file.close()
