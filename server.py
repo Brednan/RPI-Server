@@ -1,12 +1,12 @@
 import socket
 from motor_controls import MotorControls
 
-class SocketServer(MotorControls):
+class SocketServer():
     def __init__(self, HOST, PORT):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((HOST, PORT))
         self.server.listen()
-        super().__init__()
+        self.motors_manager = MotorControls()
 
     def request_listener(self):
         conn, addr = self.server.accept()
@@ -27,4 +27,4 @@ class SocketServer(MotorControls):
             if data:
                 content = data.decode()
                 if content == 'Forward':
-                    self.move_forward()
+                    self.motors_manager.move_forward()
