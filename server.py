@@ -28,3 +28,6 @@ class SocketServer():
                 content = data.decode()
                 if content == 'Forward':
                     self.motors_manager.move_forward()
+                
+                elif content == 'Stop':
+                    self.motors_manager.stop_motors()
