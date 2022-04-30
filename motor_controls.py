@@ -1,9 +1,10 @@
 from adafruit_motorkit import MotorKit
 
 
-class MotorControls(MotorKit):
+class MotorControls():
     def __init__(self):
+        self.motors = MotorKit()
         super().__init__()
     
     def move_forward(self):
-        self.motor1.throttle(1.0)
+        self.motors.motor1.throttle(1.0)
