@@ -6,4 +6,4 @@ class MotorControls():
         self.motors = MotorKit()
     
     def move_forward(self):
-        self.motors.motor1.throttle(1.0)
+        self.motors.motor1.throttle = 1.0
