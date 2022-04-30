@@ -5,4 +5,4 @@ from motor_controls import MotorControls
 # server.server_manager()
 
 motors = MotorControls()
-motors.motor1.throttle(1.0) 
+motors.motors.motor1.throttle(1.0) 
