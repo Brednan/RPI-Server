@@ -35,6 +35,12 @@ class SocketServer():
                 elif content == 'Stop':
                     self.motors_manager.stop_motors()
                 
+                elif content == 'Right':
+                    self.motors_manager.turn_right()
+                
+                elif content == 'Left':
+                    self.motors_manager.turn_left()
+
                 elif content == "Footage":
                     self.send_footage(conn)
 
