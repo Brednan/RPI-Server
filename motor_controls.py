@@ -1,26 +1,22 @@
-from adafruit_motorkit import MotorKit
-
+import RPi.GPIO as GPIO
+import time
 
 class MotorControls():
-    def __init__(self):
-        self.motors = MotorKit()
-    
-    def move_forward(self):
-        self.motors.motor1.throttle = 0.5
-        self.motors.motor2.throttle = 0.5
+    def __init__(self, R1, R2):
+        self.R1 = R1
+        self.R2 = R2
 
-    def stop_motors(self):
-        self.motors.motor1.throttle = 0.0
-        self.motors.motor2.throttle = 0.0
-    
-    def move_backward(self):
-        self.motors.motor1.throttle = -0.5
-        self.motors.motor2.throttle = -0.5
-    
-    def turn_right(self):
-        self.motors.motor1.throttle = -0.5
-        self.motors.motor2.throttle = 0.5
-    
-    def turn_left(self):
-        self.motors.motor1.throttle = 0.5
-        self.motors.motor2.throttle = -0.5
+        GPIO.setwarnings(False)
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.R1, GPIO.OUT)
+
+    def test(self):
+        GPIO.output(self.R1, GPIO.HIGH)
+        GPIO.output(self.R1, GPIO.LOW)
+
+    def move_forward(self):
+        pass
+
+
+motors = MotorControls(40, 38)
+motors.test()
