@@ -1,6 +1,6 @@
 import socket
 from xxlimited import foo
-from motor_controls import MotorControls
+from motor_hat_controller import MotorControls
 import os
 
 class SocketServer():
