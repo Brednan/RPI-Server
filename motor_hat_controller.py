@@ -24,6 +24,6 @@ class MotorControls(MotorKit):
     
     def turn_left(self):
         super().motor1.throttle = -1.0
-        super().motor1.throttle = 1.0
+        super().motor2.throttle = 1.0
         super().motor3.throttle = -1.0
         super().motor4.throttle = 1.0
