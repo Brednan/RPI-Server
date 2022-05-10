@@ -2,8 +2,9 @@ import socket
 from xxlimited import foo
 from motor_hat_controller import MotorControls
 import os
+from Vision.vision import Vision
 
-class SocketServer():
+class SocketServer(Vision):
     def __init__(self, HOST, PORT):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((HOST, PORT))
@@ -25,6 +26,8 @@ class SocketServer():
         conn.sendall(content)
     
     def server_manager(self):
+        
+
         while True:
             data, conn = self.request_listener()
             if data:
@@ -51,6 +54,5 @@ class SocketServer():
         while footage:
             conn.sendall(footage)
             footage = footage_file.read(2048)
-        
-        print('done sending')
+
         footage_file.close()
